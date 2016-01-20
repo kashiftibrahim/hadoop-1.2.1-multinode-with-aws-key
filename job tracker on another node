@@ -1,4 +1,4 @@
-The Below script is made by considering that linux user have launch 4 Ec2 cluster on ubuntu Os with the AWS key name a.pem
+The Below script is made by considering that linux user have launch 5 Ec2 cluster on ubuntu Os with the AWS key name a.pem
 go to the terminal by pressing crt+T
 
 $ chmod 400 /Download/a.pem
@@ -17,6 +17,7 @@ $ sudo nano /etc/hosts
 (please write the FQDN address of your EC2 Clusters)
 172.31.23.8  ip-172-31-23-8.eu-west-1.compute.internal  nn
 172.31.23.7  ip-172-31-23-7.eu-west-1.compute.internal  snn
+172.31.23.7  ip-172-31-23-7.eu-west-1.compute.internal  jt
 172.31.23.10  ip-172-31-23-10.eu-west-1.compute.internal  dn1
 172.31.23.9  ip-172-31-23-9.eu-west-1.compute.internal  dn2
 ctrl+x y to save and exit from nano
@@ -25,6 +26,7 @@ $ ssh  snn
 $ sudo nano /etc/hosts
 172.31.23.8  ip-172-31-23-8.eu-west-1.compute.internal  nn
 172.31.23.7  ip-172-31-23-7.eu-west-1.compute.internal  snn
+172.31.23.7  ip-172-31-23-7.eu-west-1.compute.internal  jt
 172.31.23.10  ip-172-31-23-10.eu-west-1.compute.internal  dn1
 172.31.23.9  ip-172-31-23-9.eu-west-1.compute.internal  dn2
 ctrl+x y to save and exit from nano
@@ -34,6 +36,7 @@ $ ssh  dn1
 $ sudo nano /etc/hosts
 172.31.23.8  ip-172-31-23-8.eu-west-1.compute.internal  nn
 172.31.23.7  ip-172-31-23-7.eu-west-1.compute.internal  snn
+172.31.23.7  ip-172-31-23-7.eu-west-1.compute.internal  jt
 172.31.23.10  ip-172-31-23-10.eu-west-1.compute.internal  dn1
 172.31.23.9  ip-172-31-23-9.eu-west-1.compute.internal  dn2
 ctrl+x y to save and exit from nano
@@ -43,6 +46,7 @@ $ ssh  dn2
 $ sudo nano /etc/hosts
 172.31.23.8  ip-172-31-23-8.eu-west-1.compute.internal  nn
 172.31.23.7  ip-172-31-23-7.eu-west-1.compute.internal  snn
+172.31.23.7  ip-172-31-23-7.eu-west-1.compute.internal  jt
 172.31.23.10  ip-172-31-23-10.eu-west-1.compute.internal  dn1
 172.31.23.9  ip-172-31-23-9.eu-west-1.compute.internal  dn2
 ctrl+x y to save and exit from nano
@@ -56,6 +60,7 @@ nn
 snn 
 dn1
 dn2
+jt
 ctrl+x y to save and exit from nano
 
 $ nano ~/.bashrc
@@ -68,7 +73,9 @@ ctrl+x y to save and exit from nano
 $ scp .bashrc .profile  ubuntu@snn:/home/ubuntu
 $ scp .bashrc .profile  ubuntu@dn1:/home/ubuntu
 $ scp .bashrc .profile  ubuntu@dn2:/home/ubuntu
+$ scp .bashrc .profile  ubuntu@jt:/home/ubuntu
 $ scp .ssh/a.pem ubuntu@snn:/home/ubuntu/.ssh
+$ scp .ssh/a.pem ubuntu@jt:/home/ubuntu/.ssh
 $ scp .ssh/a.pem ubuntu@dn1:/home/ubuntu/.ssh
 $ scp .ssh/a.pem ubuntu@dn2:/home/ubuntu/.ssh
 
@@ -119,6 +126,8 @@ $ cd /usr/local/hadoop/conf/
 $ scp  hadoop-env.sh core-site.xml hdfs-site.xml mapred-site.xml ubuntu@snn:/usr/local/hadoop/conf/
 $ scp  hadoop-env.sh core-site.xml hdfs-site.xml mapred-site.xml ubuntu@dn1:/usr/local/hadoop/conf/
 $ scp  hadoop-env.sh core-site.xml hdfs-site.xml mapred-site.xml ubuntu@dn2:/usr/local/hadoop/conf/
+$ scp  hadoop-env.sh core-site.xml hdfs-site.xml mapred-site.xml ubuntu@jt:/usr/local/hadoop/conf/
+
 
 $ nano /usr/local/hadoop/conf/masters
 snn
